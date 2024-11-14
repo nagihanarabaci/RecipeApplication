@@ -1,0 +1,77 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/myrecipeFragment"
+        android:name="com.example.recipeapplication.ui.myrecipe.MyRecipeFragment"
+        android:label="MyRecipeFragment"
+        tools:layout="@layout/fragment_myrecipe" >
+        <action
+            android:id="@+id/action_myrecipeFragment_to_addrecipeFragment"
+            app:destination="@id/addrecipeFragment" />
+        <action
+            android:id="@+id/action_myrecipeFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addrecipeFragment"
+        android:name="com.example.recipeapplication.ui.addrecipe.AddRecipeFragment"
+        android:label="AddRecipeFragment"
+        tools:layout="@layout/fragment_addrecipe" >
+        <argument
+            android:name="information"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addrecipeFragment_to_myrecipeFragment"
+            app:destination="@id/myrecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.recipeapplication.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_myrecipeFragment"
+            app:destination="@id/myrecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.example.recipeapplication.ui.RecipeDetailFragment"
+        android:label="fragment_recipe_detail"
+        tools:layout="@layout/fragment_recipe_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_brieflyFragment"
+            app:destination="@id/brieflyFragment" />
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_recipeIngredientsFragment"
+            app:destination="@id/recipeIngredientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/brieflyFragment"
+        android:name="com.example.recipeapplication.ui.brieflyrecipe.BrieflyFragment"
+        android:label="fragment_briefly"
+        tools:layout="@layout/fragment_briefly" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeIngredientsFragment"
+        android:name="com.example.recipeapplication.ui.ingredientsrecipe.RecipeIngredientsFragment"
+        android:label="fragment_recipe_ingredients"
+        tools:layout="@layout/fragment_recipe_ingredients" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
