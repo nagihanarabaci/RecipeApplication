@@ -78,7 +78,7 @@ class RecipeDetailFragment : Fragment() {
             viewPager2.adapter = adapter
             tableLayout.addTab(tableLayout.newTab().setText("Ingredients"))
             tableLayout.addTab(tableLayout.newTab().setText("Briefly"))
-            tableLayout.addTab(tableLayout.newTab().setText("Let's cook"))
+            tableLayout.addTab(tableLayout.newTab().setText("Remove Recipe"))
 
             for (i in 0 until tableLayout.getTabCount()) {
                 val tab: TabLayout.Tab? = tableLayout.getTabAt(i)

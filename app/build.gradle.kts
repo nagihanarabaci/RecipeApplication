@@ -71,4 +71,7 @@ dependencies {
     implementation(libs.maven)
     implementation(libs.gson)
 
+    implementation(libs.lottie)
+    implementation(libs.gif.drawable)
+
 }

@@ -16,6 +16,8 @@ navigation = "2.8.0"
 androidxNavigationSafeargsGradlePlugin = "2.8.0"
 rxandroid = "3.0.2"
 legacySupportV4 = "1.0.0"
+lottieVersion = "6.6.0"
+gifDrawableVersion = "1.2.25"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -32,6 +34,8 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieVersion" }
+gif-drawable = { group = "pl.droidsonroids.gif", name = "android-gif-drawable", version.ref = "gifDrawableVersion" }
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
 rxJava3 = {group = "androidx.room", name = "room-rxjava3", version = "2.6.1" }
 maven = {group = "com.github.Spikeysanju", name = "MotionToast", version = "1.4"}

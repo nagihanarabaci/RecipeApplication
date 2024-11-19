@@ -9,6 +9,8 @@ import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -61,6 +63,7 @@ class AddRecipeFragment : Fragment() {
     private var secilenGorsel : Uri?=null
     private var secilenBitmap : Bitmap?=null
     private var secilenTarif :Recipe ?=null
+
     // işlemleri yaptığımızda kullanmak için
     private val mDisposable = CompositeDisposable()
 
@@ -94,7 +97,6 @@ class AddRecipeFragment : Fragment() {
         with(binding) {
             imageViewRecipeChoose.setOnClickListener { imageSave(it) }
             buttonAdd.setOnClickListener { saveRecipe(it,ingredientsList,brieflysList) }
-            buttonRemove.setOnClickListener { removeRecipe(it) }
             buttonAddIngredients.setOnClickListener { addIngredientsItem(rvIngredients,editTextIngredients,ingredientsList) }
             buttonAddBriefly.setOnClickListener { addIngredientsItem(rvBrieflyList,editTextBriefly,brieflysList) }
             arguments?.let { it ->
@@ -103,7 +105,6 @@ class AddRecipeFragment : Fragment() {
                 if (newInformation == "yeni"){
                     // yeni tarif ekleme kısmı
                     secilenTarif= null
-                    buttonRemove.isEnabled = false
                     buttonAdd.isEnabled = true
                     editTextFoodName.setText("")
                     editTextIngredients.setText("")
@@ -114,7 +115,7 @@ class AddRecipeFragment : Fragment() {
                 }else{
                     // eski eklenmiş tarif silme işlemini yapabiliriz.
 
-                    buttonRemove.isEnabled = true
+
                     buttonAdd.isEnabled = false
 
                     val id = AddRecipeFragmentArgs.fromBundle(it).id
@@ -153,6 +154,7 @@ class AddRecipeFragment : Fragment() {
         if (name.isEmpty() || ingredient.isEmpty() || briefly.isEmpty() || times.isEmpty() || servings.isEmpty() || secilenBitmap==null) {
             showMotionToast("Lütfen tüm alanları doldurunuz")
         }else {
+
             val smallBitmap = smallBitmapCreate(secilenBitmap!!,300)
             val outputStream = ByteArrayOutputStream()
             smallBitmap.compress(Bitmap.CompressFormat.PNG,50,outputStream)
@@ -167,28 +169,24 @@ class AddRecipeFragment : Fragment() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::handleResponseForInsert))
 
+
         }
 
     }
 
     private fun handleResponseForInsert(){
         //bir önceki fragmenta dön
-        findNavController().navigate(R.id.myrecipeFragment)
+
+        showMotionSuccesToast("Ürün Ekleme İşleminiz başaarılı")
+
+
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController().navigate(R.id.myrecipeFragment)
+        }, 2000)
     }
 
 
-    fun removeRecipe(view: View) {
-
-        if (secilenTarif != null){
-            mDisposable.add(
-                recipeDao.delete(recipe = secilenTarif!!)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::handleResponseForInsert)
-            )
-        }
-
-    }
 
     fun imageSave(view: View){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
@@ -318,6 +316,18 @@ class AddRecipeFragment : Fragment() {
             "EKSİK BİLGİ",
             message,
             MotionToastStyle.WARNING,
+            GRAVITY_BOTTOM,
+            MotionToast.LONG_DURATION,
+            getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular)
+        )
+    }
+
+    private fun showMotionSuccesToast(message: String) {
+        MotionToast.createColorToast(
+            context as Activity,
+            "Ürün Eklendi",
+            message,
+            MotionToastStyle.SUCCESS,
             GRAVITY_BOTTOM,
             MotionToast.LONG_DURATION,
             getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular)

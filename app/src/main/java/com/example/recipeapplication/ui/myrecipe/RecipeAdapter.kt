@@ -46,7 +46,7 @@ class RecipeAdapter (private val context: Context,val recipeList: List<Recipe>) 
 
         holder.itemView.setOnClickListener {
             val action = MyRecipeFragmentDirections.actionMyrecipeFragmentToAddrecipeFragment(information = "eski", id = recipeList[position].id)
-            Navigation.findNavController(it).navigate(action)
+            findNavController(it).navigate(action)
         }
 
         Glide.with(holder.itemView.context)
@@ -59,7 +59,8 @@ class RecipeAdapter (private val context: Context,val recipeList: List<Recipe>) 
             showMotionToast("Şu anda bu işlem yapılandırılmamıştır")
         }
 
-        holder.binding.imageViewFoodImage.setOnClickListener {
+
+        holder.binding.cardView.setOnClickListener {
             val action = MyRecipeFragmentDirections.actionMyrecipeFragmentToRecipeDetailFragment(id= recipeList[position].id)
             findNavController(it).navigate(action)
         }

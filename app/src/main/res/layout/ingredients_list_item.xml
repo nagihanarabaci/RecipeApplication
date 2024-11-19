@@ -9,8 +9,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center|center_horizontal"
         android:orientation="horizontal"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,20 +24,25 @@
             android:id="@+id/imageViewIngredients"
             android:layout_width="4dp"
             android:layout_height="4dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingTop="2dp"
+            android:paddingRight="6dp"
+            android:paddingBottom="2dp"
             app:srcCompat="@drawable/recyclerview_number_bg" />
 
         <TextView
             android:id="@+id/textViewIngredientsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="8dp"
+            android:layout_gravity="center|center_vertical"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <View

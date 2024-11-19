@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_recipeDetailFragment_to_recipeIngredientsFragment"
             app:destination="@id/recipeIngredientsFragment" />
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_removeRecipeFragment2"
+            app:destination="@id/removeRecipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/brieflyFragment"
@@ -69,6 +72,15 @@
         android:name="com.example.recipeapplication.ui.ingredientsrecipe.RecipeIngredientsFragment"
         android:label="fragment_recipe_ingredients"
         tools:layout="@layout/fragment_recipe_ingredients" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/removeRecipeFragment"
+        android:name="com.example.recipeapplication.ui.removerecipe.RemoveRecipeFragment"
+        android:label="fragment_remove_recipe"
+        tools:layout="@layout/fragment_remove_recipe" >
         <argument
             android:name="id"
             app:argType="integer" />

@@ -162,20 +162,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="617dp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonRemove"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/button_bg"
-                android:onClick="removeRecipe"
-                android:text="Remove"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
-                app:layout_constraintVertical_bias="0.37" />
+
         </LinearLayout>
 
 

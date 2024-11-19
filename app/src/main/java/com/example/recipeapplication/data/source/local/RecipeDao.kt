@@ -23,6 +23,9 @@ interface RecipeDao {
     @Delete
     fun delete(recipe: Recipe) : Completable
 
+    @Query("DELETE  FROM Recipe WHERE id = :id")
+    fun deleteById(id:Int) : Completable
+
     @Insert
     fun insertItem(ingredientsItem: Recipe) : Completable
 
