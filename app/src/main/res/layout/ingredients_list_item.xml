@@ -26,6 +26,7 @@
             android:layout_height="4dp"
             android:layout_gravity="center|center_horizontal"
             android:layout_marginRight="10dp"
+            android:contentDescription="TODO"
             android:gravity="center"
             android:paddingLeft="6dp"
             android:paddingTop="2dp"

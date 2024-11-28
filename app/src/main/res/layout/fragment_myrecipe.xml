@@ -10,6 +10,7 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +72,7 @@
         android:layout_marginBottom="32dp"
         android:background="@color/white"
         android:clickable="true"
-        android:onClick="addRecipe"
+        android:focusable="true"
         app:cardCornerRadius="12dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewRecipe"
@@ -89,7 +90,7 @@
                 android:id="@+id/imageView8"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                app:srcCompat="@drawable/icon_app" />
+                android:contentDescription="TODO" app:srcCompat="@drawable/icon_app" />
 
             <Space
                 android:layout_width="8dp"

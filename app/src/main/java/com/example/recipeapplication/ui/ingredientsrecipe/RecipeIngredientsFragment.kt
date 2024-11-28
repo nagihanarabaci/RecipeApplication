@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import com.example.recipeapplication.common.toRecyclerViewItemsList
 import com.example.recipeapplication.data.model.Recipe
 import com.example.recipeapplication.data.model.RecyclerViewItems
 import com.example.recipeapplication.data.source.local.RecipeDao
@@ -65,7 +66,6 @@ class RecipeIngredientsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         with(binding) {
             rvIngredientsItems.layoutManager = LinearLayoutManager(requireContext())
             foodId?.let { loadRecipe(it) }
@@ -75,15 +75,17 @@ class RecipeIngredientsFragment : Fragment() {
 
 
     private fun loadRecipe(recipeId:Int){
-        recipeDao.findById(recipeId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({recipe->
-                val ingredients = Gson().fromJson(recipe.ingredient,Array<RecyclerViewItems>::class.java).toList()
-                val adapter = IngredientsAdapter(ingredients)
-                binding.rvIngredientsItems.adapter = adapter
+        mDisposable.add(
+            recipeDao.findById(recipeId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({recipe->
+                    val ingredients = recipe.ingredient.toRecyclerViewItemsList()
+                    val adapter = IngredientsAdapter(ingredients)
+                    binding.rvIngredientsItems.adapter = adapter
 
-            },{ error-> Log.e("RecipeDetailActivity", "Error loading recipe", error) })
+                },{ error-> Log.e("RecipeIngredientsFragment", "Error loading recipe", error) })
+        )
     }
 
 

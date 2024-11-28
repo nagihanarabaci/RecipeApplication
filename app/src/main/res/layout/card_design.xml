@@ -38,7 +38,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay"
-                    app:srcCompat="@drawable/cook_im" />
+                    app:srcCompat="@drawable/cook_im"
+                    tools:ignore="MissingConstraints" />
 
                 <ImageButton
                     android:id="@+id/buttonFavorite"
@@ -51,13 +52,13 @@
                     android:elevation="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageViewFoodImage"
-                    app:srcCompat="@drawable/ic_favorite" />
+                    app:srcCompat="@drawable/ic_favorite"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/textViewFoodNameRc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center"
                     android:text="TextView"
@@ -81,7 +82,6 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -89,10 +89,13 @@
                         android:id="@+id/imageView7"
                         android:layout_width="12dp"
                         android:layout_height="12dp"
-                        app:srcCompat="@drawable/icon_servings" />
-<Space
-    android:layout_width="8dp"
-    android:layout_height="wrap_content"/>
+                        app:srcCompat="@drawable/icon_servings"
+                        tools:ignore="ContentDescription" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="wrap_content"/>
+
                     <TextView
                         android:id="@+id/textViewServingsRc"
                         android:layout_width="match_parent"
@@ -104,6 +107,7 @@
                         android:textSize="13sp" />
 
                 </LinearLayout>
+
                 <Space
                     android:layout_width="26dp"
                     android:layout_height="wrap_content"/>
@@ -118,7 +122,8 @@
                         android:id="@+id/imageView6"
                         android:layout_width="12dp"
                         android:layout_height="12dp"
-                        app:srcCompat="@drawable/time" />
+                        app:srcCompat="@drawable/time"
+                        tools:ignore="ContentDescription" />
                     <Space
                         android:layout_width="8dp"
                         android:layout_height="wrap_content"/>

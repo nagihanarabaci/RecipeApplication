@@ -30,5 +30,4 @@ interface RecipeDao {
     fun insertItem(ingredientsItem: Recipe) : Completable
 
 
-
 }

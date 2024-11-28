@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import com.example.recipeapplication.common.toRecyclerViewItemsList
 import com.example.recipeapplication.data.model.Recipe
 import com.example.recipeapplication.data.model.RecyclerViewItems
 import com.example.recipeapplication.data.source.local.RecipeDao
@@ -84,23 +85,25 @@ class BrieflyFragment : Fragment() {
 
     }
 
-
     private fun handleResponse(recipes : Recipe) {
         binding.textViewBrieflyName.text = recipes.name
-        Log.d("msg","buradaaa ${recipes.name}")
         binding.textViewBrieflyTime.text = recipes.times
         binding.textViewBrieflyServings.text = recipes.servings
     }
 
+
     private fun loadRecipe(recipeId:Int){
-        recipeDao.findById(recipeId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({recipe->
-                val briefly = Gson().fromJson(recipe.briefly,Array<RecyclerViewItems>::class.java).toList()
-                val adapter = RecipeBrieflyAdapter(briefly)
-                binding.rvBriefly.adapter = adapter
-            },{ error->Log.e("RecipeDetailActivity", "Error loading recipe", error) })
+        mDisposable.add(
+            recipeDao.findById(recipeId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({recipe->
+                    val briefly = recipe.briefly.toRecyclerViewItemsList()
+                    val adapter = RecipeBrieflyAdapter(briefly)
+                    binding.rvBriefly.adapter = adapter
+                },{ error->Log.e("RecipeDetailActivity", "Error loading recipe", error) })
+        )
+
     }
 
     override fun onDestroyView() {
