@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/recipeDetailFragment"
-        android:name="com.example.recipeapplication.ui.RecipeDetailFragment"
+        android:name="com.example.recipeapplication.ui.detailrecipe.RecipeDetailFragment"
         android:label="fragment_recipe_detail"
         tools:layout="@layout/fragment_recipe_detail" >
         <argument

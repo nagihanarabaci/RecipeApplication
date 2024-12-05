@@ -10,11 +10,14 @@ import com.example.recipeapplication.common.colorList
 import com.example.recipeapplication.data.model.RecyclerViewItems
 import com.example.recipeapplication.databinding.IngredientsListItemBinding
 
-class IngredientsAdapter(val recipeList:List<RecyclerViewItems>) : RecyclerView.Adapter<IngredientsAdapter.IngredientsViewHolder>() {
-    class IngredientsViewHolder(val binding:IngredientsListItemBinding) : RecyclerView.ViewHolder(binding.root)
+class IngredientsAdapter(val recipeList: List<RecyclerViewItems>) :
+    RecyclerView.Adapter<IngredientsAdapter.IngredientsViewHolder>() {
+    class IngredientsViewHolder(val binding: IngredientsListItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientsViewHolder {
-        val ingredientsListItemBinding = IngredientsListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val ingredientsListItemBinding =
+            IngredientsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return IngredientsViewHolder(ingredientsListItemBinding)
     }
 
@@ -26,7 +29,8 @@ class IngredientsAdapter(val recipeList:List<RecyclerViewItems>) : RecyclerView.
         holder.binding.textViewIngredientsText.text = recipeList[position].text
 
         val backgroundColor = colorList[position % colorList.size]
-        val drawable = ContextCompat.getDrawable(holder.itemView.context, R.drawable.recyclerview_number_bg)
+        val drawable =
+            ContextCompat.getDrawable(holder.itemView.context, R.drawable.recyclerview_number_bg)
         if (drawable is GradientDrawable) {
             drawable.setColor(backgroundColor)
             holder.binding.imageViewIngredients.background = drawable

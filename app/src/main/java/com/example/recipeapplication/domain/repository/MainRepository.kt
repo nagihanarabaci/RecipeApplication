@@ -1,3 +1,0 @@
-package com.example.recipeapplication.domain.repository
-
-interface MainRepository

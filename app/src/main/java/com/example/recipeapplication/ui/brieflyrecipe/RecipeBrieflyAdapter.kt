@@ -11,11 +11,14 @@ import com.example.recipeapplication.data.model.RecyclerViewItems
 import com.example.recipeapplication.databinding.BrieflyListItemBinding
 
 
-class RecipeBrieflyAdapter(val recipeList: List<RecyclerViewItems>) : RecyclerView.Adapter<RecipeBrieflyAdapter.RecipeDetailViewHolder>() {
-    class RecipeDetailViewHolder(val binding: BrieflyListItemBinding) :RecyclerView.ViewHolder(binding.root){}
+class RecipeBrieflyAdapter(val recipeList: List<RecyclerViewItems>) :
+    RecyclerView.Adapter<RecipeBrieflyAdapter.RecipeDetailViewHolder>() {
+    class RecipeDetailViewHolder(val binding: BrieflyListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeDetailViewHolder {
-        val brieflyLayoutBinding = BrieflyListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val brieflyLayoutBinding =
+            BrieflyListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecipeDetailViewHolder(brieflyLayoutBinding)
     }
 
@@ -26,16 +29,15 @@ class RecipeBrieflyAdapter(val recipeList: List<RecyclerViewItems>) : RecyclerVi
     override fun onBindViewHolder(holder: RecipeDetailViewHolder, position: Int) {
 
         holder.binding.textViewBrieflyStepText.text = recipeList[position].text
-        holder.binding.textViewBrieflyStepNumber.text = (position+1).toString()
+        holder.binding.textViewBrieflyStepNumber.text = (position + 1).toString()
 
         val backgroundColor = colorList[position % colorList.size]
-        val drawable = ContextCompat.getDrawable(holder.itemView.context, R.drawable.recyclerview_number_bg)
+        val drawable =
+            ContextCompat.getDrawable(holder.itemView.context, R.drawable.recyclerview_number_bg)
         if (drawable is GradientDrawable) {
             drawable.setColor(backgroundColor)
             holder.binding.textViewBrieflyStepNumber.background = drawable
         }
-
-
 
 
     }

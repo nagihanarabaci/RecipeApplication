@@ -1,13 +1,8 @@
 package com.example.recipeapplication.ui
 
 import android.os.Bundle
-import android.view.WindowInsets
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.recipeapplication.R
 import com.example.recipeapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
